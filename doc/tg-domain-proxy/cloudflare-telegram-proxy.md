@@ -113,7 +113,6 @@ function relayResponse(response) {
 | 自定义上游 | 将 `TELEGRAM_HOST` 改写为 Secrets，通过 `wrangler secret put TELEGRAM_HOST` 注入。 |
 | 路径映射 | 若需增加前缀，可在 `buildTelegramUrl` 中通过 `url.pathname = url.pathname.replace(/^\\/proxy/, '')` 等方式裁剪。 |
 
----
 
 ## 六、部署与绑定自定义域名（可选）
 
@@ -123,7 +122,6 @@ function relayResponse(response) {
    - 输入 `telegram.yourdomain.com`，按提示在 DNS 中添加 CNAME。
    - 待状态显示 Active 后即可使用自定义域。
 
----
 
 ## 七、功能验证
 
@@ -146,7 +144,7 @@ curl -X POST \
 
 ---
 
-## 八、在 n8n 中更新 Telegram 凭据
+## 九、在 n8n 中更新 Telegram 凭据
 
 1. 打开 n8n → Credentials → 找到 Telegram API 凭证（例如 `n8n_quant_agent`）。
 2. 将 **Base URL** 修改为 Worker 域名（如 `https://telegram-proxy.your-subdomain.workers.dev`），留空 Token 字段以沿用原 Bot Token。
@@ -154,7 +152,7 @@ curl -X POST \
 
 ---
 
-## 九、常见问题与排查
+## 十、常见问题与排查
 
 | 问题 | 排查要点 |
 | --- | --- |
@@ -165,7 +163,7 @@ curl -X POST \
 
 ---
 
-## 十、运维与安全建议
+## 十一、运维与安全建议
 
 - **速率限制**：免费 Worker 日调用量有限，长时间高频调用请升级套餐或配合 Cloudflare Turnstile 限流。
 - **日志监控**：定期在 Cloudflare 中查看 Request Logs 或接入 Workers Analytics，分析失败请求。
@@ -174,7 +172,7 @@ curl -X POST \
 
 ---
 
-## 十一、下一步
+## 十二、下一步
 
 1. 在测试环境先试跑，确认 Worker 正常转发后再切换生产工作流。
 2. 若需在其他服务（如自建后端）复用此代理，只需更新调用域名即可。
